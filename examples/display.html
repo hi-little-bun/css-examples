@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive CSS Editor</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <h1>Display Layout</h1>
+    <div class="grid-container"></div>
+    <script src="../script.js"></script>
+    <script>
+        let commonHtml = `
+<style>
+    .example-container { 
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+
+    .child {
+        display: inline-block;
+        padding: .5em 1em;
+        background-color: #ccf;
+        border: 1px solid #ababab;
+        color: #000;
+    }
+</style>
+<div class="example-container">
+    Some text A.
+    <div class="example-element">
+        <div class="child">Child 1</div>
+        <div class="child">Child 2</div>
+        <div class="child">Child 3</div>
+    </div>
+    Some text B.
+</div>
+`
+const adjustedCss = function(displayOption) {
+    return `
+.example-element {
+    border: 3px dashed orange;
+    display: ${displayOption};
+}
+`
+    return `Hello, ${name}!`;
+}; 
+        const examples = [
+            {
+                title: "Display => block",
+                description: "All child elements are stored in one block; the parent container take up the whole row and displays in a new line",
+                css: adjustedCss('block'),
+                html: commonHtml
+            },
+            {
+                title: "Display => inline",
+                description: "Child elements are not in a block, all elements are appeneded in one line",
+                css: adjustedCss('inline'),
+                html: commonHtml
+            },
+            {
+                title: "Display => inline-block",
+                description: "Child elements are listed in one block; the parent block will take the width of the combine child elements. all elements are display in one line",
+                css: adjustedCss('inline-block'),
+                html: commonHtml
+            },
+            {
+                title: "Display => flex",
+                description: "",
+                css: adjustedCss('flex'),
+                html: commonHtml
+            },
+            {
+                title: "Display => inline-flex",
+                description: "",
+                css: adjustedCss('inline-flex'),
+                html: commonHtml
+            },
+            {
+                title: "Display => grid",
+                description: "",
+                css: adjustedCss('grid'),
+                html: commonHtml
+            },
+            {
+                title: "Display => inline-grid",
+                description: "",
+                css: adjustedCss('inline-grid'),
+                html: commonHtml
+            },
+        ];
+
+        // Initialize the examples
+        initializeExamples('.grid-container', examples);
+    </script>
+</body>
+</html>
