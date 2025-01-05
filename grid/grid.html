@@ -4,202 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive CSS Editor</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .grid-container {
-            width: 80%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .example-row {
-            margin-bottom: 20px;
-        }
-
-        .example-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .example-description {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .example-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .css-editor, .html-viewer {
-            border: 1px solid #ccc;
-            padding: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-        }
-
-        .css-editor {
-            height: 150px;
-            overflow-y: auto;
-        }
-
-        textarea {
-            width: 100%;
-            height: 100%;
-            border: none;
-            resize: none;
-            font-family: monospace;
-        }
-
-        .html-viewer {
-            background-color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 150px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .divider {
-            border-top: 1px solid #ddd;
-            margin: 20px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
     <h1>Interactive CSS Editor</h1>
-    <div class="grid-container">
-        <!-- Rows dynamically generated in JavaScript -->
-    </div>
-
+    <div class="grid-container"></div>
+    <script src="../script.js"></script>
     <script>
         const examples = [
             {
                 title: "Red Paragraph",
                 description: "This example demonstrates how to change the text color and size of a paragraph.",
-                css: `
-p { 
-    color: red; 
-    font-size: 20px; 
-}
-                `,
-                html: `
-<p>This is a red paragraph!</p>
-`
+                css: `p { color: red; font-size: 20px; }`,
+                html: `<p>This is a red paragraph!</p>`
             },
             {
                 title: "Blue Box",
                 description: "This example shows how to create a square div with a background color.",
-                css: "div { width: 100px; height: 100px; background-color: blue; }",
-                html: "<div></div>"
+                css: `div { width: 100px; height: 100px; background-color: blue; }`,
+                html: `<div></div>`
             },
             {
                 title: "Green Heading",
                 description: "This example centers a heading and applies a green color.",
-                css: "h1 { text-align: center; color: green; }",
-                html: "<h1>Centered Green Heading</h1>"
+                css: `h1 { text-align: center; color: green; }`,
+                html: `<h1>Centered Green Heading</h1>`
             },
             {
                 title: "Styled List",
                 description: "This example modifies the bullet style and spacing of a list.",
-                css: "ul { list-style-type: square; } li { margin: 5px; }",
-                html: "<ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>"
+                css: `ul { list-style-type: square; } li { margin: 5px; }`,
+                html: `<ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>`
             },
             {
                 title: "Circular Image",
                 description: "This example demonstrates how to create a circular image using border radius.",
-                css: "img { border-radius: 50%; width: 100px; }",
-                html: "<img src='https://via.placeholder.com/150' alt='Placeholder'>"
+                css: `img { border-radius: 50%; width: 100px; }`,
+                html: `<img src="https://via.placeholder.com/150" alt="Placeholder">`
             }
         ];
 
-        const gridContainer = document.querySelector('.grid-container');
-
-        examples.forEach((example, index) => {
-            // Create example row container
-            const exampleRow = document.createElement('div');
-            exampleRow.className = 'example-row';
-
-            // Add title and description
-            const title = document.createElement('div');
-            title.className = 'example-title';
-            title.textContent = example.title;
-
-            const description = document.createElement('div');
-            description.className = 'example-description';
-            description.textContent = example.description;
-
-            exampleRow.appendChild(title);
-            exampleRow.appendChild(description);
-
-            // Create example content container
-            const exampleContent = document.createElement('div');
-            exampleContent.className = 'example-content';
-
-            // Create CSS editor
-            const cssEditor = document.createElement('div');
-            cssEditor.className = 'css-editor';
-            const textArea = document.createElement('textarea');
-            textArea.id = `css-input-${index}`;
-            textArea.value = example.css;
-            cssEditor.appendChild(textArea);
-
-            // Create HTML viewer
-            const htmlViewer = document.createElement('div');
-            htmlViewer.className = 'html-viewer';
-            const iframe = document.createElement('iframe');
-            iframe.id = `html-output-${index}`;
-            iframe.srcdoc = `<html><head><style>${example.css}</style></head><body>${example.html}</body></html>`;
-            htmlViewer.appendChild(iframe);
-
-            // Append CSS editor and HTML viewer to content
-            exampleContent.appendChild(cssEditor);
-            exampleContent.appendChild(htmlViewer);
-
-            // Append content to row
-            exampleRow.appendChild(exampleContent);
-
-            // Add row to container
-            gridContainer.appendChild(exampleRow);
-
-            // Add divider
-            if (index < examples.length - 1) {
-                const divider = document.createElement('div');
-                divider.className = 'divider';
-                gridContainer.appendChild(divider);
-            }
-        });
-
-        // Add event listeners for all textareas
-        const textAreas = document.querySelectorAll('textarea');
-        textAreas.forEach((textArea, index) => {
-            textArea.addEventListener('input', () => {
-                const iframe = document.getElementById(`html-output-${index}`);
-                const styleTag = `<style>${textArea.value}</style>`;
-                iframe.srcdoc = `<html><head>${styleTag}</head><body>${examples[index].html}</body></html>`;
-            });
-        });
+        // Initialize the examples
+        initializeExamples('.grid-container', examples);
     </script>
 </body>
 </html>
