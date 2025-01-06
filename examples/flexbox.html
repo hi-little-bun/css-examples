@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox CSS Editor</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <h1>Flexbox CSS</h1>
+    <div class="grid-container"></div>
+    <script src="../script.js"></script>
+    <script>
+        const examples = [
+            {
+                title: "CSS Flexbox",
+                description: "Flexbox is a layout method for arranging items in rows or columns.",
+                css: `
+.flex-container {
+  display: flex;
+  background-color: DodgerBlue;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+                `,
+                html: `
+<div class="flex-container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>  
+</div>
+                `,
+            },
+            {
+                title: "Set flexbox direction to row",
+                description: "The row value is the default value, and it displays the flex items horizontally (from left to right)",
+                css: `
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  background-color: DodgerBlue;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+                `,
+                html: `
+<div class="flex-container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>  
+</div>
+                `,
+            },
+            {
+                title: "",
+                description: "The column value displays the flex items vertically (from top to bottom):",
+                css: `
+
+                `,
+                html: `
+                `,
+            },
+            {
+                title: "",
+                description: "",
+                css: `
+                `,
+                html: `
+                `,
+            },
+            {
+                title: "",
+                description: "",
+                css: `
+                `,
+                html: `
+                `,
+            }
+        ];
+
+        // Initialize the examples
+        initializeExamples('.grid-container', examples);
+    </script>
+</body>
+</html>
