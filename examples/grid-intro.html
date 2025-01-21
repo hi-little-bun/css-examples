@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Intro</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <h1>Grid Intro</h1>
+    <div class="grid-container"></div>
+    <script src="../script.js"></script>
+    <script>
+        const examples = [
+            {
+                title: "Grid vs inline-grid",
+                description: "",
+                css: `
+.container {
+  /* inline-grid will not take the whole width */
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: dodgerblue;
+  padding: 10px;
+}
+
+.container > div {
+  background-color: #f1f1f1;
+  border: 1px solid black;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+                `,
+                html: `
+<div class="container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>  
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>  
+  <div>7</div>
+  <div>8</div>
+</div>
+                `,
+            },
+            {
+                title: "Gap & Row-Gap & Column-Gap",
+                description: "",
+                css: `
+.container {
+  display: grid;
+  column-gap: 50px;
+  row-gap: 25px;
+  /* or gap: 25px 50px */
+  grid-template-columns: auto auto auto;
+  background-color: dodgerblue;
+  padding: 10px;
+}
+
+.container > div {
+  background-color: #f1f1f1;
+  border: 1px solid black;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+                `,
+                html: `
+<div class="container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>  
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>  
+  <div>7</div>
+  <div>8</div>
+</div>
+                `,
+            },
+            {
+                title: "Grid item column start & end",
+                description: "",
+                css: `
+.item1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+  background-color: dodgerblue;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+                `,
+                html: `
+<div class="grid-container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>  
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+  <div class="item6">6</div>
+  <div class="item7">7</div>
+  <div class="item8">8</div>  
+</div>
+                `,
+            },
+            {
+                title: "Grid item row start & end",
+                description: "",
+                css: `
+.item1 {
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+  background-color: dodgerblue;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+                `,
+                html: `
+<div class="grid-container">
+  <div class="item1">1</div>
+  <div class="item2">2</div>
+  <div class="item3">3</div>  
+  <div class="item4">4</div>
+  <div class="item5">5</div>
+  <div class="item6">6</div>
+  <div class="item7">7</div>
+  <div class="item8">8</div>  
+</div>
+                `,
+            },
+            {
+                title: "",
+                description: "",
+                css: `
+
+                `,
+                html: `
+
+                `,
+            }
+        ];
+
+        // Initialize the examples
+        initializeExamples('.grid-container', examples);
+    </script>
+</body>
+</html>

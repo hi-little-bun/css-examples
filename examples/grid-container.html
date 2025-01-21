@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Container</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <h1>Grid Container</h1>
+    <div class="grid-container"></div>
+    <script src="../script.js"></script>
+    <script>
+        const examples = [
+            {
+                title: "grid column",
+                description: "Make a grid with 4 columns",
+                css: `
+.grid-container {
+  display: grid;
+  /*
+    fix grid column size:
+    grid-template-columns: 80px 200px auto 30px;
+  */
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+                `,
+                html: `
+<div class="grid-container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>  
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>  
+  <div>7</div>
+  <div>8</div>
+</div>
+                `,
+            },
+            {
+                title: "grid-template-rows",
+                description: "",
+                css: `
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 80px 200px;
+  gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+                `,
+                html: `
+<div class="grid-container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>  
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>  
+</div>
+                `,
+            },
+            {
+                title: "The justify-content",
+                description: "The justify-content property is used to align the whole grid inside the container.",
+                css: `
+.grid-container {
+  display: grid;
+  /*
+  other option: 
+  space-around
+  space-between
+  center
+  start
+  end
+  */
+  justify-content: space-evenly;
+  grid-template-columns: 50px 50px 50px; /*Make the grid smaller than the container*/
+  gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+                `,
+                html: `
+<div class="grid-container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>  
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>  
+</div>
+                `,
+            },
+            {
+                title: "align-content property is used to vertically align",
+                description: "The grid's total height has to be less than the container's height for the align-content property to have any effect",
+                css: `
+.grid-container {
+  display: grid;
+  height: 400px;
+  /*
+  other option: 
+  space-around
+  space-between
+  center
+  start
+  end
+  */
+  align-content: center;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+                `,
+                html: `
+<div class="grid-container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>  
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>  
+</div>
+                `,
+            },
+            {
+                title: "The place-content",
+                description: "The place-content property is a shorthand property for the align-content and the justify-content properties.",
+                css: `
+.grid-container {
+  display: grid;
+  height: 400px;
+  place-content: center center;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+  background-color: #2196F3;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+}
+                `,
+                html: `
+<div class="grid-container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>  
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>  
+</div>
+                `,
+            },
+            {
+                title: "",
+                description: "",
+                css: `
+
+                `,
+                html: `
+
+                `,
+            },
+            {
+                title: "",
+                description: "",
+                css: `
+
+                `,
+                html: `
+
+                `,
+            }
+        ];
+
+        // Initialize the examples
+        initializeExamples('.grid-container', examples);
+    </script>
+</body>
+</html>
